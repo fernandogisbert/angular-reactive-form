@@ -1,0 +1,72 @@
+<div class="container">
+    <h1 class="text-center pt-5 pb-5">Formulario reactivo</h1>
+    <form autocomplete="off" [formGroup]="propiedadFormulario" (ngSubmit)="saveForm()" >
+        <div class="form-group">
+          <label>Nombre</label>
+          <input 
+            type="text" 
+            class="form-control"
+            placeholder="Introduce tu nombre"
+            formControlName="nombre"
+            [class.is-invalid]="nombreInvalido"
+            [class.is-valid]="nombreValido"  >
+          <small *ngIf="nombreInvalido" class="form-text text-danger">El nombre debe contener al menos 3 letras.</small>
+        </div>
+        <div class="form-group">
+            <label>Apellido</label>
+            <input 
+                type="text" 
+                class="form-control"
+                placeholder="Introduce tu apellido"
+                formControlName="apellido"
+                [class.is-invalid]="apellidoInvalido"
+                [class.is-valid]="apellidoValido"  >
+                
+            <small *ngIf="apellidoInvalido" class="form-text text-danger">El apellido debe contener al menos 2 letras.</small>
+        </div>
+        <div class="form-group">
+            <label>Edad</label>
+            <input 
+                type="number" 
+                class="form-control"
+                placeholder="Introduce tu edad"
+                formControlName="edad" >
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input 
+                type="email" 
+                class="form-control"
+                placeholder="Introduce tu email"
+                formControlName="email" 
+                [class.is-invalid]="correoInvalido"
+                [class.is-valid]="correoValido"  >
+                
+            <small *ngIf="correoInvalido" class="form-text text-danger">Debes introducir un email válido</small>
+        </div>
+        <div class="form-group" formGroupName="direccion">
+            <label>Dirección</label>
+            <input 
+                type="text" 
+                class="form-control mb-4"
+                placeholder="Calle"
+                formControlName="calle" >
+            <input 
+                type="text" 
+                class="form-control mb-4"
+                placeholder="Ciudad"
+                formControlName="ciudad" >
+            <input 
+                type="text" 
+                class="form-control mb-4"
+                placeholder="Provincia"
+                formControlName="provincia" >
+            <input 
+                type="text" 
+                class="form-control mb-4"
+                placeholder="Pais"
+                formControlName="pais" >
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
